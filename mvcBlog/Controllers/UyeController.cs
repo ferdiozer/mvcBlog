@@ -1,6 +1,5 @@
-﻿using mvcBlogDB.Models;
+﻿using mvcBlog.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -24,12 +23,24 @@ namespace mvcBlog.Controllers
         [HttpPost]
         public ActionResult Login(Uye uye)
         {
+            //kullanıcı adı ile kullanıcıyı çektik
             var login = db.Uyes.Where(u => u.kullaniciAdi == uye.kullaniciAdi).SingleOrDefault();
-            if (login.kullaniciAdi==uye.kullaniciAdi && login.email==uye.email && login.sifre==uye.sifre)
+            if (login!= null && login.kullaniciAdi==uye.kullaniciAdi && login.email==uye.email && login.sifre==uye.sifre)
             {
-
+                Session["uyeid"] = login.id;
+                Session["kullaniciadi"] = login.kullaniciAdi;
+                Session["yetkiid"] = login.yetki_id;
+                RedirectToAction("Index", "Home");
             }
+
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["uyeid"] = null;
+            Session.Abandon();
+           return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Create()

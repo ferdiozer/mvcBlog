@@ -55,11 +55,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="kullaniciAdi" Type="nchar" MaxLength="20" />
-          <Property Name="email" Type="nchar" MaxLength="50" />
-          <Property Name="sifre" Type="nchar" MaxLength="20" />
-          <Property Name="adSoyad" Type="nchar" MaxLength="100" />
-          <Property Name="foto" Type="nchar" MaxLength="250" />
+          <Property Name="kullaniciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="sifre" Type="varchar" MaxLength="50" />
+          <Property Name="adSoyad" Type="varchar" MaxLength="100" />
+          <Property Name="foto" Type="varchar" MaxLength="250" />
           <Property Name="yetki_id" Type="int" />
         </EntityType>
         <EntityType Name="Yetki">
@@ -226,11 +226,11 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kullaniciAdi" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="sifre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
-          <Property Name="foto" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="adSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="yetki_id" Type="Int32" />
           <NavigationProperty Name="Yetki" Relationship="Self.FK_Uye_Yetki" FromRole="Uye" ToRole="Yetki" />
           <NavigationProperty Name="Yorums" Relationship="Self.FK_Yorum_Uye" FromRole="Uye" ToRole="Yorum" />

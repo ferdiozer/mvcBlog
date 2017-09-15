@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace mvcBlogDB.Models
+namespace mvcBlog.Models
 {
     using System;
     using System.Data.Entity;
