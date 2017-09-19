@@ -1,0 +1,18 @@
+﻿@model IEnumerable<mvcBlog.Models.Makale>
+
+
+@{
+    Layout = null;
+}
+
+<h5 class="card-header">En Çok Okunan Makaleler</h5>
+<div class="card-body">
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a href="/Home/MakaleDetay/@item.id">@item.baslik</a> (@item.okunma)</li>
+        }
+    </ul>
+
+</div>

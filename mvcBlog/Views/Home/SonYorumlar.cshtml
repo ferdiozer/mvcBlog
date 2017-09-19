@@ -1,0 +1,62 @@
+﻿@model IEnumerable<mvcBlog.Models.Yorum>
+
+@{ 
+    Layout = null;
+}
+
+<h5 class="card-header">Son Yorumlar</h5>
+<div class="card-body">
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.icerik</li>
+        }
+    </ul>
+  
+</div>
+
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.icerik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Makale.baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uye.kullaniciAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.icerik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tarih)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Makale.baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uye.kullaniciAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>*@

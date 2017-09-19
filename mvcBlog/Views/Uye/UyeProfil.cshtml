@@ -1,0 +1,65 @@
+﻿@model mvcBlog.Models.Uye
+
+@{
+    ViewBag.Title = "UyeProfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Üye Profili</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.kullaniciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kullaniciAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            <img class="img-thumbnail img-circle img-responsive" width="100" height="100" src="@Model.foto" alt="@Model.adSoyad" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yetki.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yetki.ad)
+        </dd>
+
+    </dl>
+</div>
+<h4 class="panel text-center">Son Makaleler</h4>
+<div class="alert-dark">
+    
+    <ul>
+        @foreach (var item in Model.Makales.OrderByDescending(m=>m.id).Take(5))
+        {
+            <li><a href="/Home/MakaleDetay/@item.id">@item.baslik</a></li>
+        }
+    </ul>
+</div>

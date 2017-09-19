@@ -63,6 +63,7 @@ namespace mvcBlogDB.Controllers
 
                     }
                 }
+                makale.uye_id = Convert.ToInt32(Session["uyeid"]);
                 db.Makales.Add(makale);
                 db.SaveChanges();
                 return RedirectToAction("Index");

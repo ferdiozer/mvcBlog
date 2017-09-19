@@ -35,5 +35,6 @@ namespace mvcBlog.Models
         public virtual ICollection<Yorum> Yorums { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Etiket> Etikets { get; set; }
+        public virtual Uye Uye { get; set; }
     }
 }

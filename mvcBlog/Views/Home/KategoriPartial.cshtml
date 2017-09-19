@@ -11,7 +11,7 @@
             <ul class="list-unstyled mb-0">
                 @foreach (var item in Model)
                 {
-                    <li><a href="/Home/KategoriMakale/@item.id">@item.ad</a></li>
+                    <li><a href="/Home/KategoriMakale/@item.id">@item.ad (@item.Makales.Count())</a></li>
                 }
             </ul>
         </div>

@@ -8,8 +8,8 @@
         <EntityTypeShape EntityType="mvcblogModel.Etiket" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mvcblogModel.Kategori" Width="1.5" PointX="0.625" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="mvcblogModel.Makale" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="mvcblogModel.Uye" Width="1.5" PointX="7.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="mvcblogModel.Yetki" Width="1.5" PointX="4.875" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="mvcblogModel.Uye" Width="1.5" PointX="8.375" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="mvcblogModel.Yetki" Width="1.5" PointX="5.125" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="mvcblogModel.Yorum" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="mvcblogModel.FK_Makale_Kategori" ManuallyRouted="false" />
         <AssociationConnector Association="mvcblogModel.FK_Yorum_Makale" ManuallyRouted="false" />
@@ -17,6 +17,7 @@
         <AssociationConnector Association="mvcblogModel.FK_Yorum_Uye" ManuallyRouted="false" />
         <AssociationConnector Association="mvcblogModel.makale_etiket" ManuallyRouted="false" />
         <EntityTypeShape EntityType="mvcblogModel.sysdiagram" Width="1.5" PointX="2.5" PointY="4.375" />
+        <AssociationConnector Association="mvcblogModel.FK_Makale_Uye" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

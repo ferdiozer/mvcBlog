@@ -1,16 +1,31 @@
 ﻿@model IEnumerable<mvcBlog.Models.Makale>
 
 @{
-    ViewBag.Title = "Makale Listesi";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "KategoriMakale";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Makale Listesi</h2>
 
-<p>
-    @Html.ActionLink("Yeni Makale", "Create")
-</p>
-<table class="table">
+@using GridMvc.Html
+
+
+@Html.Grid(Model).SetLanguage("tr").Columns(columns =>
+{
+    columns.Add(m => m.Kategori.ad).Titled("Kategori Adı").SetWidth(110).Sortable(true).Filterable(true);
+    columns.Add(m => m.baslik).Sortable(true).Filterable(true);
+    columns.Add(m => m.tarih).Sortable(true).Filterable(true);
+    columns.Add(m => m.okunma).Sortable(true).Filterable(true);
+
+}).WithPaging(20)
+
+@*<script type="text/javascript">
+    this.lang = GridMvc.lang[this.options.lang];
+    if (typeof (this.lang) == 'undefined')
+        this.lang = GridMvc.lang.ru;
+</script>*@
+
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.baslik)
@@ -25,13 +40,13 @@
             @Html.DisplayNameFor(model => model.tarih)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.uye_id)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.okunma)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Kategori.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uye.kullaniciAdi)
         </th>
         <th></th>
     </tr>
@@ -45,13 +60,10 @@
             @Html.DisplayFor(modelItem => item.icerik)
         </td>
         <td>
-            <img src="@item.foto" width="75" />
+            @Html.DisplayFor(modelItem => item.foto)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.tarih)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.uye_id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.okunma)
@@ -60,10 +72,10 @@
             @Html.DisplayFor(modelItem => item.Kategori.ad)
         </td>
         <td>
-            @Html.ActionLink("Düzenle", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Sil", "Delete", new { id=item.id })
+            @Html.DisplayFor(modelItem => item.Uye.kullaniciAdi)
         </td>
+
     </tr>
 }
 
-</table>
+</table>*@

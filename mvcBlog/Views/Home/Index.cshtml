@@ -1,69 +1,47 @@
 ﻿
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<mvcBlog.Models.Makale>
 @{
     ViewBag.Title = "Anasayfa";
 }
 
-@*<h2>Index</h2>*@
+<h2>@ViewBag.Title</h2>
 
    <!-- Blog Post -->
-<div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-    <div class="card-body">
-        <h2 class="card-title">Post Title</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
+@foreach (var item in Model)
+{
+    <div class="card mb-4">
+        <img class="card-img-top" src="@item.foto" alt="@item.baslik">
+        <div class="card-body">
+            <h2 class="card-title">@item.baslik</h2>      
+                @if (item.icerik.Length > 150)
+                {
+                    <p class="card-text">
+                        @Html.Raw(item.icerik.Substring(0,150))...
+                    </p>
+
+                }
+                else
+                {
+                    <p class="card-text">
+                        @Html.Raw(item.icerik)...
+                    </p>
+                }     
+            <a href="/Home/MakaleDetay/@item.id" class="btn btn-primary">Devamını Oku &rarr;</a>
+        </div>
+        <div class="card-footer text-muted">
+           Tarih : @String.Format("{0: d MMMM yyyy}",item.tarih) | Yazar :
+            <img class="rounded-circle" width="50" height="50" src="@item.Uye.foto" alt="@item.Uye.adSoyad" /> 
+            <a href="/Uye/UyeProfil/@item.Uye.id">@item.Uye.kullaniciAdi</a>
+        </div>
     </div>
-    <div class="card-footer text-muted">
-        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-    </div>
-</div><div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-    <div class="card-body">
-        <h2 class="card-title">Post Title</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
-    </div>
-    <div class="card-footer text-muted">
-        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-    </div>
-</div><div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-    <div class="card-body">
-        <h2 class="card-title">Post Title</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
-    </div>
-    <div class="card-footer text-muted">
-        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-    </div>
-</div><div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-    <div class="card-body">
-        <h2 class="card-title">Post Title</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
-    </div>
-    <div class="card-footer text-muted">
-        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-    </div>
-</div><div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-    <div class="card-body">
-        <h2 class="card-title">Post Title</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
-    </div>
-    <div class="card-footer text-muted">
-        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-    </div>
-</div><div class="card mb-4">
-    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-    <div class="card-body">
-        <h2 class="card-title">Post Title</h2>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-        <a href="#" class="btn btn-primary">Read More &rarr;</a>
-    </div>
-    <div class="card-footer text-muted">
-        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-    </div>
+}
+
+<div class="container-fluid">
+   <div class="text-center">
+       <div class="pagedList pagination-lg">
+           @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }), PagedListRenderOptions.Classic)
+       </div>
+   </div>
 </div>

@@ -2,14 +2,14 @@ namespace mvcBlogDB.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<mvcBlogDB.Models.mvcblogDB>
+    internal sealed class Configuration : DbMigrationsConfiguration<mvcBlog.Models.mvcblogDB>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
-
-        protected override void Seed(mvcBlogDB.Models.mvcblogDB context)
+        //mvcBlogDB.Models.mvcblogDB context
+        protected override void Seed(mvcBlog.Models.mvcblogDB content)
         {
             //  This method will be called after migrating to the latest version.
 

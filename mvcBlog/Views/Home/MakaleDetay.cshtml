@@ -1,0 +1,185 @@
+﻿@model mvcBlog.Models.Makale
+
+@{
+    ViewBag.Title = "MakaleDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    <!-- Title -->
+    <h1 class="mt-4">@Model.baslik</h1>
+
+    <!-- Author -->
+    <p class="lead">
+        Yazar : <img class="img-circle img-responsive" width="50" height="50" src="@Model.Uye.foto" alt="@Model.Uye.adSoyad" /> <a href="/Uye/UyeProfil/@Model.uye_id">@Model.Uye.adSoyad</a>
+    </p>
+
+    <hr>
+
+    <!-- Date/Time -->
+    <p>Tarih : @String.Format("{0: d MMMM yyyy}", Model.tarih)</p>
+
+    <hr>
+
+    <!-- Preview Image -->
+    <img class="img-fluid rounded" src="@Model.foto" alt="">
+
+    <hr>
+
+    <!-- Post Content -->
+@Html.Raw(Model.icerik)
+<hr />
+    <blockquote class="blockquote">
+        <footer class="blockquote-footer">
+            Etiketler : 
+            <cite title="Etiketler">
+                @foreach (var item in Model.Etikets)
+                   {
+                    <span>@item.ad ,</span>
+                   }
+            </cite>
+        </footer>
+    </blockquote>
+<p>Yorum Sayısı : @Model.Yorums.Count  |  Görüntüleme Sayısı : @Model.okunma</p>
+    <hr>
+
+    <!-- Comments Form -->
+@if (Session["uyeid"] != null)
+{
+    <div class="card my-4">
+        <h5 class="card-header">Yorum</h5>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <textarea id="yorum" typeof="text" class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" id="gonder" class="btn btn-primary">Yorum Yap</button>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+        <h3>Yorum Yapabilmek İçin Giriş Yapmalısınız</h3>
+        <p><a href="/Uye/Login/">Giriş Yap</a></p>
+}
+
+    <!-- Single Comment -->
+
+@foreach (var item in Model.Yorums.ToList())
+{
+    <div class="media mb-4">
+        <img class="d-flex mr-3 rounded-circle" src="@item.Uye.foto" alt="@item.Uye.adSoyad">
+        <div class="media-body">
+            <h5 class="mt-0">@item.Uye.adSoyad</h5>
+          @item.icerik - 
+            @if (Convert.ToInt32(Session["uyeid"])==item.uye_id)
+            {
+                <a class="btn btn-danger" href="/Home/YorumSil/@item.id">Sil</a>
+            }
+        </div>
+    </div>
+}
+
+
+
+<script src="~/Content/Kaynak/startbootstrap-blog-home-gh-pages/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gonder").click(function () {
+            var yorumunuz = $("#yorum").val();
+            $.ajax({
+                url: '/Home/YorumYap/',
+                data: { yorum: yorumunuz, makaleid:@Model.id },
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    alert("Başarılı : " + yorumunuz);
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Home/OkunmaArttir/',
+            data: { Makaleid:@Model.id},
+            type: 'POST'
+        });
+    });
+</script>
+
+
+@*<h2>MakaleDetay</h2>
+
+<div>
+    <h4>Makale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.icerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.icerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.okunma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.okunma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uye.kullaniciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uye.kullaniciAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

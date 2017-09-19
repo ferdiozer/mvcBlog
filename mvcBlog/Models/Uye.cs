@@ -18,6 +18,7 @@ namespace mvcBlog.Models
         public Uye()
         {
             this.Yorums = new HashSet<Yorum>();
+            this.Makales = new HashSet<Makale>();
         }
     
         public int id { get; set; }
@@ -31,5 +32,7 @@ namespace mvcBlog.Models
         public virtual Yetki Yetki { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Yorum> Yorums { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Makale> Makales { get; set; }
     }
 }
