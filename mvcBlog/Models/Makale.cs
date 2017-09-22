@@ -11,7 +11,9 @@ namespace mvcBlog.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
+
     public partial class Makale
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +25,7 @@ namespace mvcBlog.Models
     
         public int id { get; set; }
         public string baslik { get; set; }
+        [UIHint("tinymce_full_compressed"),AllowHtml]
         public string icerik { get; set; }
         public string foto { get; set; }
         public Nullable<System.DateTime> tarih { get; set; }

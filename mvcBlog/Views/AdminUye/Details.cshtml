@@ -1,0 +1,67 @@
+﻿@model mvcBlog.Models.Uye
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Uye</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.kullaniciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kullaniciAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sifre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sifre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yetki.ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yetki.ad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

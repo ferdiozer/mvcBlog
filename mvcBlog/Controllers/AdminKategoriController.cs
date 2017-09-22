@@ -13,6 +13,7 @@ namespace mvcBlogDB.Controllers
         // GET: AdminKategori
         public ActionResult Index()
         {
+            
             return View(db.Kategoris.ToList());
         }
 

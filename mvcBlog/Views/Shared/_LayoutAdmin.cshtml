@@ -62,28 +62,25 @@
                         </span>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents">
-                        <i class="fa fa-fw fa-wrench"></i>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Üyeler">
+                    <a class="nav-link" href="/AdminUye">
+                        <i class="fa fa-fw fa-table"></i>
                         <span class="nav-link-text">
-                            Components
+                            Üyeler
                         </span>
                     </a>
-                    <ul class="sidenav-second-level collapse" id="collapseComponents">
-                        <li>
-                            <a href="#">Static Navigation</a>
-                        </li>
-                        <li>
-                            <a href="#">Custom Card Examples</a>
-                        </li>
-                        <li>
-                            <a href="#">Blank Page</a>
-                        </li>
-                        <li>
-                            <a href="#">Login Page</a>
-                        </li>
-                    </ul>
                 </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Kategoriler">
+                    <a class="nav-link" href="/AdminYorum/Index">
+                        <i class="fa fa-fw fa-table"></i>
+                        <span class="nav-link-text">
+                            Yorumlar
+                        </span>
+                    </a>
+                </li>
+              
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                     <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti">
                         <i class="fa fa-fw fa-sitemap"></i>
@@ -214,7 +211,7 @@
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0 mr-lg-2">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
+                            <input type="text" class="form-control" placeholder="Arama Yap...">
                             <span class="input-group-btn">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fa fa-search"></i>
@@ -226,7 +223,7 @@
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-fw fa-sign-out"></i>
-                        Logout
+                        Çıkış
                     </a>
                 </li>
             </ul>
@@ -257,8 +254,8 @@
                     Select "Logout" below if you are ready to end your current session.
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                    <a class="btn btn-primary" href="/Uye/Logout/">Çıkış</a>
                 </div>
             </div>
         </div>
